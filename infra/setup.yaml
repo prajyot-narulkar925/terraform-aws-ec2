@@ -1,0 +1,24 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: helloworld-tf
+spec:
+  interval: 1m
+  url: https://github.com/prajyot-narulkar925/terraform-aws-ec2
+  ref:
+    branch: master
+---
+apiVersion: infra.contrib.fluxcd.io/v1alpha1
+kind: Terraform
+metadata:
+  name: helloworld-tf
+spec:
+  path: ./terraform
+  approvePlan: auto
+  interval: 1m
+  sourceRef:
+    kind: GitRepository
+    name: helloworld-tf
+  writeOutputsToSecret:
+    name: helloworld-outputs
