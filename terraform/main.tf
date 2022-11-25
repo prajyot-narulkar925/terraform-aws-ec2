@@ -1,3 +1,12 @@
+variable "access_key" {
+   type = string
+   default = ""
+}
+variable "secret_key" {
+   type = string
+   default = ""
+}
+
 provider "aws" {
   region     = "ap-south-1"
   access_key = ""
