@@ -7,19 +7,10 @@ terraform {
   }
 }
 
-variable "access_key" {
-   type = string
-   default = ""
-}
-variable "secret_key" {
-   type = string
-   default = ""
-}
-
 provider "aws" {
   region     = "ap-south-1"
-  access_key = "${var.access_key}"
-  secret_key = "${var.secret_key}"
+  access_key = "${var.aws_access_key}"
+  secret_key = "${var.aws_secret_key}"
 }
 
 resource "aws_instance" "example" {
