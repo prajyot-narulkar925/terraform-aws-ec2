@@ -40,3 +40,12 @@ resource "aws_security_group" "sg_test" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+resource "aws_s3_bucket" "b" {
+  bucket = "my-tf-test-bucket-prajyot-demo"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
