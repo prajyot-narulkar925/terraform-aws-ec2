@@ -22,4 +22,4 @@ spec:
     name: aws-credentials
   sourceRef:
     kind: GitRepository
-    name: aws-ec2
+    name: terra-aws-ec2
