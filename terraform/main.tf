@@ -15,7 +15,7 @@ provider "aws" {
 
 resource "aws_instance" "example" {
   ami           = "ami-074dc0a6f6c764218"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   tags = {
     Name = "gitops-pipeline-deployment"
   }
