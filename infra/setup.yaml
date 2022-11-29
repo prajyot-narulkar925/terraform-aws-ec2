@@ -23,9 +23,3 @@ spec:
   sourceRef:
     kind: GitRepository
     name: aws-ec2
-  timeout: 3m
-  healthChecks:
-  - apiVersion: infra.contrib.fluxcd.io/v1alpha1
-    kind: Terraform
-    name: terra-ec2-depl
-    namespace: ec2-deployment
