@@ -15,7 +15,7 @@ provider "aws" {
 
 resource "aws_instance" "example" {
   ami           = "ami-074dc0a6f6c764218"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   tags = {
     Name = "gitops-pipeline-deployment"
   }
@@ -38,14 +38,5 @@ resource "aws_security_group" "sg_test" {
     protocol = "-1"
     to_port = 0
     cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
-  resource "aws_s3_bucket" "test-storage" {
-  bucket = "tf-test-bucket"
-  acl    = "private"
-
-  versioning {
-    enabled = true
   }
 }
