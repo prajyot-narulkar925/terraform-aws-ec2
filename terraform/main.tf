@@ -33,6 +33,15 @@ resource "aws_security_group" "sg_test" {
     cidr_blocks = ["136.226.252.246/32"]
   }
 
+  resource "aws_s3_bucket" "test-storage" {
+  bucket = "tf-test-bucket"
+  acl    = "private"
+
+  versioning {
+    enabled = true
+  }
+}
+  
   #Outgoing traffic
   egress {
     from_port = 0
