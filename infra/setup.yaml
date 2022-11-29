@@ -18,7 +18,7 @@ spec:
   approvePlan: auto
   interval: 1m
   varsFrom:
-    kind: Secret
+  - kind: Secret
     name: aws-credentials
   sourceRef:
     kind: GitRepository
