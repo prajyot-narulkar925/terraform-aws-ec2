@@ -17,8 +17,11 @@ spec:
   path: ./terraform
   approvePlan: auto
   interval: 1m
+  varsFrom:
+    kind: Secret
+    name: aws-credentials
   sourceRef:
     kind: GitRepository
-    name: helloworld-ec2
+    name: aws-ec2
   writeOutputsToSecret:
     name: helloworld-outputs
