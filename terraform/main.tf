@@ -31,7 +31,15 @@ resource "aws_security_group" "sg_test" {
     to_port = 22
     protocol = "tcp"
     cidr_blocks = ["136.226.252.246/32"]
+  }  
+  #Outgoing traffic
+  egress {
+    from_port = 0
+    protocol = "-1"
+    to_port = 0
+    cidr_blocks = ["0.0.0.0/0"]
   }
+}
 
   resource "aws_s3_bucket" "test-storage" {
   bucket = "tf-test-bucket"
@@ -39,14 +47,5 @@ resource "aws_security_group" "sg_test" {
 
   versioning {
     enabled = true
-  }
-}
-  
-  #Outgoing traffic
-  egress {
-    from_port = 0
-    protocol = "-1"
-    to_port = 0
-    cidr_blocks = ["0.0.0.0/0"]
   }
 }
