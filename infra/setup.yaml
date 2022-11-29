@@ -2,17 +2,17 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
-  name: helloworld-ec2
+  name: terra-aws-ec2
 spec:
   interval: 1m
   url: https://github.com/prajyot-narulkar925/terraform-aws-ec2
   ref:
-    branch: master
+    branch: main
 ---
 apiVersion: infra.contrib.fluxcd.io/v1alpha1
 kind: Terraform
 metadata:
-  name: helloworld-ec2
+  name: terra-ec2
 spec:
   path: ./terraform
   approvePlan: auto
@@ -23,5 +23,9 @@ spec:
   sourceRef:
     kind: GitRepository
     name: aws-ec2
-  writeOutputsToSecret:
-    name: helloworld-outputs
+  timeout: 3m
+  healthChecks:
+  - apiVersion: infra.contrib.fluxcd.io/v1alpha1
+    kind: Terraform
+    name: terra-ec2-depl
+    namespace: ec2-deployment
