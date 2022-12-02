@@ -23,3 +23,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: terra-aws-ec2
+  writeOutputsToSecret:
+    name: instance-details

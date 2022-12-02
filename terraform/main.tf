@@ -49,3 +49,11 @@ resource "aws_s3_bucket" "b" {
     Environment = "Dev"
   }
 }
+
+output "aws_instance_data"{
+    value = aws_instance.example
+}
+
+output "type" {
+  value = "${aws_instance.example.instance_type}"
+}
