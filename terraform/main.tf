@@ -50,6 +50,19 @@ resource "aws_s3_bucket" "b" {
   }
 }
 
+resource "aws_opensearch_domain" "opensearch-ex" {
+  domain_name    = "prajyot-test-example"
+  engine_version = "Elasticsearch_7.10"
+
+  cluster_config {
+    instance_type = "r4.large.search"
+  }
+
+  tags = {
+    Domain = "TestDomain"
+  }
+}
+
 output "aws_instance_data"{
     value = aws_instance.example
 }
