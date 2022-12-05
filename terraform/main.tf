@@ -51,36 +51,36 @@ resource "aws_s3_bucket" "b" {
 }
 
 
-resource "aws_elasticsearch_domain" "prajyot-example" {
-  domain_name           = var.domain
-  elasticsearch_version = "7.10"
-  cluster_config {
-    instance_type = var.instance_type
-    instance_count = 1
-  }
-  ebs_options {
-    ebs_enabled = var.ebs_volume_size > 0 ? true : false
-    volume_size = var.ebs_volume_size
-    volume_type = var.volume_type
-  }
+# resource "aws_elasticsearch_domain" "prajyot-example" {
+#   domain_name           = var.domain
+#   elasticsearch_version = "7.10"
+#   cluster_config {
+#     instance_type = var.instance_type
+#     instance_count = 1
+#   }
+#   ebs_options {
+#     ebs_enabled = var.ebs_volume_size > 0 ? true : false
+#     volume_size = var.ebs_volume_size
+#     volume_type = var.volume_type
+#   }
 
-  tags = {
-    Domain = var.tag_domain
-  }
-}
+#   tags = {
+#     Domain = var.tag_domain
+#   }
+# }
 
-output "arn" {
-    value = aws_elasticsearch_domain.prajyot-example.arn
-}
-output "domain_id" {
-    value = aws_elasticsearch_domain.prajyot-example.domain_id
-}
-output "domain_name" {
-    value = aws_elasticsearch_domain.prajyot-example.domain_name
-}
-output "endpoint" {
-    value = aws_elasticsearch_domain.prajyot-example.endpoint
-}
+# output "arn" {
+#     value = aws_elasticsearch_domain.prajyot-example.arn
+# }
+# output "domain_id" {
+#     value = aws_elasticsearch_domain.prajyot-example.domain_id
+# }
+# output "domain_name" {
+#     value = aws_elasticsearch_domain.prajyot-example.domain_name
+# }
+# output "endpoint" {
+#     value = aws_elasticsearch_domain.prajyot-example.endpoint
+# }
 
 output "aws_instance_data"{
     value = aws_instance.example
