@@ -50,17 +50,36 @@ resource "aws_s3_bucket" "b" {
   }
 }
 
-resource "aws_opensearch_domain" "opensearch-ex" {
-  domain_name    = "prajyot-test-example"
-  engine_version = "Elasticsearch_7.10"
+
+resource "aws_elasticsearch_domain" "prajyot-example" {
+  domain_name           = var.domain
+  elasticsearch_version = "7.10"
 
   cluster_config {
-    instance_type = "r4.large.search"
+    instance_type = var.instance_type
+    instance_count = 1
   }
-
+  ebs_options {
+    ebs_enabled = var.ebs_volume_size > 0 ? true : false
+    volume_size = var.ebs_volume_size
+    volume_type = var.volume_type
+  }
   tags = {
-    Domain = "TestDomain"
+    Domain = var.tag_domain
   }
+}
+
+output "arn" {
+    value = aws_elasticsearch_domain.prajyot-es.arn
+}
+output "domain_id" {
+    value = aws_elasticsearch_domain.prajyot-es.domain_id
+}
+output "domain_name" {
+    value = aws_elasticsearch_domain.prajyot-es.domain_name
+}
+output "endpoint" {
+    value = aws_elasticsearch_domain.prajyot-es.endpoint
 }
 
 output "aws_instance_data"{
