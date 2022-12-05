@@ -54,9 +54,9 @@ resource "aws_opensearch_domain" "opensearch-ex" {
   domain_name    = "prajyot-test-example"
   engine_version = "Elasticsearch_7.10"
 
-  cluster_config {
-    instance_type = "r4.large.search"
-  }
+  # cluster_config {
+  #   instance_type = "r4.large.search"
+  # }
 
   tags = {
     Domain = "TestDomain"
